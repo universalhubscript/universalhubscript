@@ -2,7 +2,7 @@ local TweenService = game:GetService("TweenService");
 local Players = game:GetService("Players");
 local HttpService = game:GetService("HttpService");
 local LocalPlayer = Players.LocalPlayer;
-local CorrectKey = "2026MUNDONOVO";
+local CorrectKey = "2026NOVO";
 local function IniciarHubOriginal()
 	local TweenService = game:GetService("TweenService");
 	local Players = game:GetService("Players");
