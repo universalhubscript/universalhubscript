@@ -13,57 +13,67 @@ local function IniciarHubOriginal()
 		writefile(FavFile, HttpService:JSONEncode({}));
 	end
 	local function GetFavorites()
-		local success, content = pcall(function()
-			return readfile(FavFile);
-		end);
-		if success then
-			return HttpService:JSONDecode(content);
+		local FlatIdent_66556 = 0;
+		local success;
+		local content;
+		while true do
+			if (FlatIdent_66556 == 0) then
+				success, content = pcall(function()
+					return readfile(FavFile);
+				end);
+				if success then
+					return HttpService:JSONDecode(content);
+				end
+				FlatIdent_66556 = 1;
+			end
+			if (FlatIdent_66556 == 1) then
+				return {};
+			end
 		end
-		return {};
 	end
 	local function ToggleFavorite(scriptName, gameName)
-		local FlatIdent_2584C = 0;
+		local FlatIdent_5CA49 = 0;
 		local favs;
 		local index;
 		while true do
-			if (FlatIdent_2584C == 0) then
-				favs = GetFavorites();
-				if not favs[gameName] then
-					favs[gameName] = {};
-				end
-				FlatIdent_2584C = 1;
-			end
-			if (FlatIdent_2584C == 1) then
+			if (1 == FlatIdent_5CA49) then
 				index = table.find(favs[gameName], scriptName);
 				if index then
-					local FlatIdent_6D4CB = 0;
+					local FlatIdent_61538 = 0;
 					while true do
-						if (FlatIdent_6D4CB == 1) then
-							writefile(FavFile, HttpService:JSONEncode(favs));
-							return false;
-						end
-						if (FlatIdent_6D4CB == 0) then
+						if (FlatIdent_61538 == 0) then
 							table.remove(favs[gameName], index);
 							if (#favs[gameName] == 0) then
 								favs[gameName] = nil;
 							end
-							FlatIdent_6D4CB = 1;
+							FlatIdent_61538 = 1;
+						end
+						if (FlatIdent_61538 == 1) then
+							writefile(FavFile, HttpService:JSONEncode(favs));
+							return false;
 						end
 					end
 				else
-					local FlatIdent_12703 = 0;
+					local FlatIdent_2FBEB = 0;
 					while true do
-						if (FlatIdent_12703 == 0) then
+						if (FlatIdent_2FBEB == 1) then
+							return true;
+						end
+						if (FlatIdent_2FBEB == 0) then
 							table.insert(favs[gameName], scriptName);
 							writefile(FavFile, HttpService:JSONEncode(favs));
-							FlatIdent_12703 = 1;
-						end
-						if (FlatIdent_12703 == 1) then
-							return true;
+							FlatIdent_2FBEB = 1;
 						end
 					end
 				end
 				break;
+			end
+			if (FlatIdent_5CA49 == 0) then
+				favs = GetFavorites();
+				if not favs[gameName] then
+					favs[gameName] = {};
+				end
+				FlatIdent_5CA49 = 1;
 			end
 		end
 	end
@@ -107,9 +117,18 @@ local function IniciarHubOriginal()
 	end,["Speed Hub BF"]=function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua"))();
 	end,["Xeter Hub"]=function()
-		getgenv().Version = "V3";
-		getgenv().Team = "Marines";
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))();
+		local FlatIdent_44839 = 0;
+		while true do
+			if (FlatIdent_44839 == 1) then
+				loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))();
+				break;
+			end
+			if (FlatIdent_44839 == 0) then
+				getgenv().Version = "V3";
+				getgenv().Team = "Marines";
+				FlatIdent_44839 = 1;
+			end
+		end
 	end,["Ok Hub"]=function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/fakekuri/Okhubhere/refs/heads/main/MainBloxFruit.lua"))();
 	end,["Quantum Onyx"]=function()
@@ -123,9 +142,9 @@ local function IniciarHubOriginal()
 	end}},[3]={Name="King Legacy",Icon="ðŸ‘‘",Key={["OMG Hub"]=function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/refs/heads/main/FarmingFlags"))();
 	end,["Hyper Hub"]=function()
-		local FlatIdent_60EA1 = 0;
+		local FlatIdent_39B0 = 0;
 		while true do
-			if (FlatIdent_60EA1 == 0) then
+			if (FlatIdent_39B0 == 0) then
 				repeat
 					wait();
 				until game:IsLoaded() 
@@ -310,85 +329,85 @@ local function IniciarHubOriginal()
 	ScreenGui.Name = "SFZ_V3_Final";
 	ScreenGui.ResetOnSpawn = false;
 	local function Notify(title, msg)
-		local FlatIdent_31A5A = 0;
+		local FlatIdent_1F620 = 0;
 		local NotifFrame;
 		local ns;
 		local t;
 		local m;
 		while true do
-			if (FlatIdent_31A5A == 7) then
-				m.BackgroundTransparency = 1;
-				m.TextColor3 = Color3.fromRGB(200, 200, 200);
-				m.Font = Enum.Font.Gotham;
-				FlatIdent_31A5A = 8;
+			if (FlatIdent_1F620 == 0) then
+				NotifFrame = Instance.new("Frame", ScreenGui);
+				NotifFrame.Size = UDim2.new(0, 220, 0, 60);
+				NotifFrame.Position = UDim2.new(1, 10, 1, -70);
+				FlatIdent_1F620 = 1;
 			end
-			if (3 == FlatIdent_31A5A) then
+			if (FlatIdent_1F620 == 1) then
+				NotifFrame.BackgroundColor3 = Color3.fromRGB(45, 0, 80);
+				Instance.new("UICorner", NotifFrame).CornerRadius = UDim.new(0, 10);
+				ns = Instance.new("UIStroke", NotifFrame);
+				FlatIdent_1F620 = 2;
+			end
+			if (6 == FlatIdent_1F620) then
+				m.Text = msg;
+				m.Size = UDim2.new(1, -20, 0, 25);
+				m.Position = UDim2.new(0, 10, 0, 30);
+				FlatIdent_1F620 = 7;
+			end
+			if (FlatIdent_1F620 == 8) then
+				m.TextSize = 11;
+				m.TextXAlignment = "Left";
+				m.TextWrapped = true;
+				FlatIdent_1F620 = 9;
+			end
+			if (3 == FlatIdent_1F620) then
 				t.Text = title;
 				t.Size = UDim2.new(1, -20, 0, 25);
 				t.Position = UDim2.new(0, 10, 0, 5);
-				FlatIdent_31A5A = 4;
+				FlatIdent_1F620 = 4;
 			end
-			if (9 == FlatIdent_31A5A) then
+			if (FlatIdent_1F620 == 4) then
+				t.BackgroundTransparency = 1;
+				t.TextColor3 = Color3.new(1, 1, 1);
+				t.Font = Enum.Font.GothamBold;
+				FlatIdent_1F620 = 5;
+			end
+			if (2 == FlatIdent_1F620) then
+				ns.Color = Color3.fromRGB(110, 0, 190);
+				ns.Thickness = 2;
+				t = Instance.new("TextLabel", NotifFrame);
+				FlatIdent_1F620 = 3;
+			end
+			if (9 == FlatIdent_1F620) then
 				NotifFrame:TweenPosition(UDim2.new(1, -230, 1, -70), "Out", "Back", 0.5, true);
 				task.delay(3, function()
 					if NotifFrame then
-						local FlatIdent_99389 = 0;
+						local FlatIdent_1076E = 0;
 						while true do
-							if (FlatIdent_99389 == 1) then
+							if (1 == FlatIdent_1076E) then
 								NotifFrame:Destroy();
 								break;
 							end
-							if (FlatIdent_99389 == 0) then
+							if (FlatIdent_1076E == 0) then
 								NotifFrame:TweenPosition(UDim2.new(1, 10, 1, -70), "In", "Back", 0.5, true);
 								task.wait(0.5);
-								FlatIdent_99389 = 1;
+								FlatIdent_1076E = 1;
 							end
 						end
 					end
 				end);
 				break;
 			end
-			if (FlatIdent_31A5A == 5) then
+			if (7 == FlatIdent_1F620) then
+				m.BackgroundTransparency = 1;
+				m.TextColor3 = Color3.fromRGB(200, 200, 200);
+				m.Font = Enum.Font.Gotham;
+				FlatIdent_1F620 = 8;
+			end
+			if (FlatIdent_1F620 == 5) then
 				t.TextSize = 13;
 				t.TextXAlignment = "Left";
 				m = Instance.new("TextLabel", NotifFrame);
-				FlatIdent_31A5A = 6;
-			end
-			if (FlatIdent_31A5A == 1) then
-				NotifFrame.BackgroundColor3 = Color3.fromRGB(45, 0, 80);
-				Instance.new("UICorner", NotifFrame).CornerRadius = UDim.new(0, 10);
-				ns = Instance.new("UIStroke", NotifFrame);
-				FlatIdent_31A5A = 2;
-			end
-			if (FlatIdent_31A5A == 6) then
-				m.Text = msg;
-				m.Size = UDim2.new(1, -20, 0, 25);
-				m.Position = UDim2.new(0, 10, 0, 30);
-				FlatIdent_31A5A = 7;
-			end
-			if (FlatIdent_31A5A == 8) then
-				m.TextSize = 11;
-				m.TextXAlignment = "Left";
-				m.TextWrapped = true;
-				FlatIdent_31A5A = 9;
-			end
-			if (FlatIdent_31A5A == 0) then
-				NotifFrame = Instance.new("Frame", ScreenGui);
-				NotifFrame.Size = UDim2.new(0, 220, 0, 60);
-				NotifFrame.Position = UDim2.new(1, 10, 1, -70);
-				FlatIdent_31A5A = 1;
-			end
-			if (FlatIdent_31A5A == 4) then
-				t.BackgroundTransparency = 1;
-				t.TextColor3 = Color3.new(1, 1, 1);
-				t.Font = Enum.Font.GothamBold;
-				FlatIdent_31A5A = 5;
-			end
-			if (FlatIdent_31A5A == 2) then
-				ns.Color = Color3.fromRGB(110, 0, 190);
-				ns.Thickness = 2;
-				t = Instance.new("TextLabel", NotifFrame);
-				FlatIdent_31A5A = 3;
+				FlatIdent_1F620 = 6;
 			end
 		end
 	end
@@ -454,79 +473,125 @@ local function IniciarHubOriginal()
 	ResizeBtn.Text = "";
 	ResizeBtn.ZIndex = 100;
 	local function ShowExecuteConfirmation(scriptName, executeFunc)
-		if ScreenGui:FindFirstChild("ConfirmExecFrame") then
-			ScreenGui.ConfirmExecFrame:Destroy();
-		end
-		local ConfirmFrame = Instance.new("Frame", ScreenGui);
-		ConfirmFrame.Name = "ConfirmExecFrame";
-		ConfirmFrame.Size = UDim2.new(0, 350, 0, 180);
-		ConfirmFrame.Position = UDim2.new(0.5, -175, 0.5, -90);
-		ConfirmFrame.BackgroundColor3 = Color3.fromRGB(35, 0, 60);
-		ConfirmFrame.ZIndex = 5000;
-		Instance.new("UICorner", ConfirmFrame).CornerRadius = UDim.new(0, 15);
-		local UIGradient = Instance.new("UIGradient", ConfirmFrame);
-		UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 0, 150)),ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 0, 60))});
-		UIGradient.Rotation = 90;
-		local Stroke = Instance.new("UIStroke", ConfirmFrame);
-		Stroke.Color = Color3.fromRGB(120, 0, 210);
-		Stroke.Thickness = 2;
-		local TitleC = Instance.new("TextLabel", ConfirmFrame);
-		TitleC.Text = "Executar";
-		TitleC.Size = UDim2.new(1, -20, 0, 30);
-		TitleC.Position = UDim2.new(0, 15, 0, 10);
-		TitleC.TextColor3 = Color3.new(1, 1, 1);
-		TitleC.Font = Enum.Font.GothamBold;
-		TitleC.TextSize = 22;
-		TitleC.TextXAlignment = "Left";
-		TitleC.BackgroundTransparency = 1;
-		TitleC.ZIndex = 5001;
-		local Msg = Instance.new("TextLabel", ConfirmFrame);
-		Msg.Text = "VocÃª deseja realmente executar esse script?\n(" .. scriptName .. ")";
-		Msg.Size = UDim2.new(1, -30, 0, 80);
-		Msg.Position = UDim2.new(0, 15, 0, 45);
-		Msg.TextColor3 = Color3.fromRGB(220, 220, 220);
-		Msg.Font = Enum.Font.Gotham;
-		Msg.TextSize = 15;
-		Msg.TextWrapped = true;
-		Msg.TextXAlignment = "Left";
-		Msg.TextYAlignment = "Top";
-		Msg.BackgroundTransparency = 1;
-		Msg.ZIndex = 5001;
-		local YesBtn = Instance.new("TextButton", ConfirmFrame);
-		YesBtn.Text = "Sim";
-		YesBtn.Size = UDim2.new(0, 100, 0, 40);
-		YesBtn.Position = UDim2.new(0.2, 0, 0.8, -10);
-		YesBtn.TextColor3 = Color3.fromRGB(100, 255, 100);
-		YesBtn.Font = Enum.Font.GothamBold;
-		YesBtn.TextSize = 18;
-		YesBtn.BackgroundTransparency = 1;
-		YesBtn.ZIndex = 5001;
-		local NoBtn = Instance.new("TextButton", ConfirmFrame);
-		NoBtn.Text = "NÃ£o";
-		NoBtn.Size = UDim2.new(0, 100, 0, 40);
-		NoBtn.Position = UDim2.new(0.5, 30, 0.8, -10);
-		NoBtn.TextColor3 = Color3.fromRGB(255, 100, 100);
-		NoBtn.Font = Enum.Font.GothamBold;
-		NoBtn.TextSize = 18;
-		NoBtn.BackgroundTransparency = 1;
-		NoBtn.ZIndex = 5001;
-		YesBtn.MouseButton1Click:Connect(function()
-			local FlatIdent_7A75F = 0;
-			while true do
-				if (FlatIdent_7A75F == 1) then
-					pcall(executeFunc);
-					break;
-				end
-				if (FlatIdent_7A75F == 0) then
-					ConfirmFrame:Destroy();
-					Notify("EXECUTANDO", "Ativando: " .. scriptName);
-					FlatIdent_7A75F = 1;
-				end
+		local FlatIdent_30B1F = 0;
+		local ConfirmFrame;
+		local UIGradient;
+		local Stroke;
+		local TitleC;
+		local Msg;
+		local YesBtn;
+		local NoBtn;
+		while true do
+			if (FlatIdent_30B1F == 1) then
+				ConfirmFrame.BackgroundColor3 = Color3.fromRGB(35, 0, 60);
+				ConfirmFrame.ZIndex = 5000;
+				Instance.new("UICorner", ConfirmFrame).CornerRadius = UDim.new(0, 15);
+				UIGradient = Instance.new("UIGradient", ConfirmFrame);
+				UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 0, 150)),ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 0, 60))});
+				FlatIdent_30B1F = 2;
 			end
-		end);
-		NoBtn.MouseButton1Click:Connect(function()
-			ConfirmFrame:Destroy();
-		end);
+			if (FlatIdent_30B1F == 3) then
+				TitleC.Text = "Executar";
+				TitleC.Size = UDim2.new(1, -20, 0, 30);
+				TitleC.Position = UDim2.new(0, 15, 0, 10);
+				TitleC.TextColor3 = Color3.new(1, 1, 1);
+				TitleC.Font = Enum.Font.GothamBold;
+				FlatIdent_30B1F = 4;
+			end
+			if (FlatIdent_30B1F == 8) then
+				YesBtn.TextColor3 = Color3.fromRGB(100, 255, 100);
+				YesBtn.Font = Enum.Font.GothamBold;
+				YesBtn.TextSize = 18;
+				YesBtn.BackgroundTransparency = 1;
+				YesBtn.ZIndex = 5001;
+				FlatIdent_30B1F = 9;
+			end
+			if (FlatIdent_30B1F == 5) then
+				Msg.Text = "VocÃª deseja realmente executar esse script?\n(" .. scriptName .. ")";
+				Msg.Size = UDim2.new(1, -30, 0, 80);
+				Msg.Position = UDim2.new(0, 15, 0, 45);
+				Msg.TextColor3 = Color3.fromRGB(220, 220, 220);
+				Msg.Font = Enum.Font.Gotham;
+				FlatIdent_30B1F = 6;
+			end
+			if (FlatIdent_30B1F == 7) then
+				Msg.ZIndex = 5001;
+				YesBtn = Instance.new("TextButton", ConfirmFrame);
+				YesBtn.Text = "Sim";
+				YesBtn.Size = UDim2.new(0, 100, 0, 40);
+				YesBtn.Position = UDim2.new(0.2, 0, 0.8, -10);
+				FlatIdent_30B1F = 8;
+			end
+			if (10 == FlatIdent_30B1F) then
+				NoBtn.Font = Enum.Font.GothamBold;
+				NoBtn.TextSize = 18;
+				NoBtn.BackgroundTransparency = 1;
+				NoBtn.ZIndex = 5001;
+				YesBtn.MouseButton1Click:Connect(function()
+					local FlatIdent_A36C = 0;
+					while true do
+						if (FlatIdent_A36C == 0) then
+							ConfirmFrame:Destroy();
+							Notify("EXECUTANDO", "Ativando: " .. scriptName);
+							FlatIdent_A36C = 1;
+						end
+						if (FlatIdent_A36C == 1) then
+							pcall(executeFunc);
+							break;
+						end
+					end
+				end);
+				FlatIdent_30B1F = 11;
+			end
+			if (FlatIdent_30B1F == 0) then
+				if ScreenGui:FindFirstChild("ConfirmExecFrame") then
+					ScreenGui.ConfirmExecFrame:Destroy();
+				end
+				ConfirmFrame = Instance.new("Frame", ScreenGui);
+				ConfirmFrame.Name = "ConfirmExecFrame";
+				ConfirmFrame.Size = UDim2.new(0, 350, 0, 180);
+				ConfirmFrame.Position = UDim2.new(0.5, -175, 0.5, -90);
+				FlatIdent_30B1F = 1;
+			end
+			if (FlatIdent_30B1F == 6) then
+				Msg.TextSize = 15;
+				Msg.TextWrapped = true;
+				Msg.TextXAlignment = "Left";
+				Msg.TextYAlignment = "Top";
+				Msg.BackgroundTransparency = 1;
+				FlatIdent_30B1F = 7;
+			end
+			if (FlatIdent_30B1F == 2) then
+				UIGradient.Rotation = 90;
+				Stroke = Instance.new("UIStroke", ConfirmFrame);
+				Stroke.Color = Color3.fromRGB(120, 0, 210);
+				Stroke.Thickness = 2;
+				TitleC = Instance.new("TextLabel", ConfirmFrame);
+				FlatIdent_30B1F = 3;
+			end
+			if (FlatIdent_30B1F == 11) then
+				NoBtn.MouseButton1Click:Connect(function()
+					ConfirmFrame:Destroy();
+				end);
+				break;
+			end
+			if (4 == FlatIdent_30B1F) then
+				TitleC.TextSize = 22;
+				TitleC.TextXAlignment = "Left";
+				TitleC.BackgroundTransparency = 1;
+				TitleC.ZIndex = 5001;
+				Msg = Instance.new("TextLabel", ConfirmFrame);
+				FlatIdent_30B1F = 5;
+			end
+			if (FlatIdent_30B1F == 9) then
+				NoBtn = Instance.new("TextButton", ConfirmFrame);
+				NoBtn.Text = "NÃ£o";
+				NoBtn.Size = UDim2.new(0, 100, 0, 40);
+				NoBtn.Position = UDim2.new(0.5, 30, 0.8, -10);
+				NoBtn.TextColor3 = Color3.fromRGB(255, 100, 100);
+				FlatIdent_30B1F = 10;
+			end
+		end
 	end
 	local function LoadScripts(tbl, gameData)
 		for _, v in pairs(ScriptList:GetChildren()) do
@@ -541,38 +606,38 @@ local function IniciarHubOriginal()
 			end
 		end
 		if (count == 0) then
-			local FlatIdent_E0D0 = 0;
+			local FlatIdent_455BF = 0;
 			local Padding;
 			local EmptyMsg;
 			while true do
-				if (FlatIdent_E0D0 == 0) then
+				if (FlatIdent_455BF == 0) then
 					Padding = Instance.new("UIPadding", ScriptList);
 					Padding.PaddingTop = UDim.new(0, 5);
 					EmptyMsg = Instance.new("TextLabel", ScriptList);
-					FlatIdent_E0D0 = 1;
+					FlatIdent_455BF = 1;
 				end
-				if (FlatIdent_E0D0 == 2) then
-					EmptyMsg.Text = "ðŸš« VAZIO...";
-					EmptyMsg.TextColor3 = Color3.new(1, 1, 1);
-					EmptyMsg.Font = Enum.Font.GothamBold;
-					FlatIdent_E0D0 = 3;
-				end
-				if (FlatIdent_E0D0 == 1) then
-					EmptyMsg.AutoLocalize = false;
-					EmptyMsg.Size = UDim2.new(1, -10, 0, 30);
-					EmptyMsg.BackgroundTransparency = 1;
-					FlatIdent_E0D0 = 2;
-				end
-				if (FlatIdent_E0D0 == 3) then
+				if (FlatIdent_455BF == 3) then
 					EmptyMsg.TextSize = 14;
 					EmptyMsg.TextTransparency = 0.4;
 					EmptyMsg.TextXAlignment = Enum.TextXAlignment.Center;
 					break;
 				end
+				if (FlatIdent_455BF == 2) then
+					EmptyMsg.Text = "ðŸš« VAZIO...";
+					EmptyMsg.TextColor3 = Color3.new(1, 1, 1);
+					EmptyMsg.Font = Enum.Font.GothamBold;
+					FlatIdent_455BF = 3;
+				end
+				if (FlatIdent_455BF == 1) then
+					EmptyMsg.AutoLocalize = false;
+					EmptyMsg.Size = UDim2.new(1, -10, 0, 30);
+					EmptyMsg.BackgroundTransparency = 1;
+					FlatIdent_455BF = 2;
+				end
 			end
 		else
 			for name, data in pairs(tbl) do
-				local FlatIdent_324DE = 0;
+				local FlatIdent_1B51D = 0;
 				local executeFunc;
 				local originGame;
 				local ItemFrame;
@@ -580,69 +645,70 @@ local function IniciarHubOriginal()
 				local favBtn;
 				local UpdateStar;
 				while true do
-					if (FlatIdent_324DE == 2) then
-						b.AutoLocalize = false;
-						b.Size = UDim2.new(0.82, 0, 1, 0);
-						b.BackgroundColor3 = Color3.fromRGB(110, 0, 190);
-						FlatIdent_324DE = 3;
+					if (FlatIdent_1B51D == 0) then
+						executeFunc = ((type(data) == "function") and data) or data.func;
+						originGame = ((type(data) == "table") and data.originalGameName) or gameData.Name;
+						ItemFrame = Instance.new("Frame", ScriptList);
+						ItemFrame.Size = UDim2.new(1, -10, 0, 35);
+						FlatIdent_1B51D = 1;
 					end
-					if (FlatIdent_324DE == 5) then
-						favBtn = Instance.new("TextButton", ItemFrame);
-						favBtn.AutoLocalize = false;
-						favBtn.Size = UDim2.new(0.15, 0, 1, 0);
-						FlatIdent_324DE = 6;
-					end
-					if (7 == FlatIdent_324DE) then
+					if (FlatIdent_1B51D == 5) then
+						UpdateStar = nil;
 						function UpdateStar()
-							local FlatIdent_68E92 = 0;
+							local FlatIdent_324DE = 0;
 							local favs;
 							local isFav;
 							while true do
-								if (FlatIdent_68E92 == 1) then
+								if (FlatIdent_324DE == 1) then
 									favBtn.Text = (isFav and "â­") or "â˜†";
 									break;
 								end
-								if (FlatIdent_68E92 == 0) then
+								if (0 == FlatIdent_324DE) then
 									favs = GetFavorites();
 									isFav = favs[originGame] and table.find(favs[originGame], name);
-									FlatIdent_68E92 = 1;
+									FlatIdent_324DE = 1;
 								end
 							end
 						end
 						UpdateStar();
 						favBtn.TextColor3 = Color3.new(1, 1, 0);
-						FlatIdent_324DE = 8;
+						FlatIdent_1B51D = 6;
 					end
-					if (FlatIdent_324DE == 6) then
+					if (FlatIdent_1B51D == 4) then
+						favBtn.AutoLocalize = false;
+						favBtn.Size = UDim2.new(0.15, 0, 1, 0);
 						favBtn.Position = UDim2.new(0.85, 0, 0, 0);
 						favBtn.BackgroundColor3 = Color3.fromRGB(60, 0, 110);
-						UpdateStar = nil;
-						FlatIdent_324DE = 7;
+						FlatIdent_1B51D = 5;
 					end
-					if (FlatIdent_324DE == 0) then
-						executeFunc = ((type(data) == "function") and data) or data.func;
-						originGame = ((type(data) == "table") and data.originalGameName) or gameData.Name;
-						ItemFrame = Instance.new("Frame", ScriptList);
-						FlatIdent_324DE = 1;
+					if (FlatIdent_1B51D == 3) then
+						b.TextSize = 14;
+						Instance.new("UICorner", b).CornerRadius = UDim.new(0, 8);
+						b.MouseButton1Click:Connect(function()
+							ShowExecuteConfirmation(name, executeFunc);
+						end);
+						favBtn = Instance.new("TextButton", ItemFrame);
+						FlatIdent_1B51D = 4;
 					end
-					if (FlatIdent_324DE == 1) then
-						ItemFrame.Size = UDim2.new(1, -10, 0, 35);
+					if (FlatIdent_1B51D == 1) then
 						ItemFrame.BackgroundTransparency = 1;
 						b = Instance.new("TextButton", ItemFrame);
-						FlatIdent_324DE = 2;
+						b.AutoLocalize = false;
+						b.Size = UDim2.new(0.82, 0, 1, 0);
+						FlatIdent_1B51D = 2;
 					end
-					if (8 == FlatIdent_324DE) then
+					if (FlatIdent_1B51D == 6) then
 						favBtn.TextSize = 18;
 						Instance.new("UICorner", favBtn).CornerRadius = UDim.new(0, 8);
 						favBtn.MouseButton1Click:Connect(function()
-							local added = ToggleFavorite(name, originGame);
-							UpdateStar();
-							Notify("FAVORITOS", (added and ("Adicionado: " .. name)) or ("Removido: " .. name));
-							if (not added and (gameData.Name == "Favoritos")) then
-								local FlatIdent_2F37F = 0;
-								local remaining;
-								while true do
-									if (FlatIdent_2F37F == 1) then
+							local FlatIdent_7909D = 0;
+							local added;
+							while true do
+								if (FlatIdent_7909D == 1) then
+									Notify("FAVORITOS", (added and ("Adicionado: " .. name)) or ("Removido: " .. name));
+									if (not added and (gameData.Name == "Favoritos")) then
+										ItemFrame:Destroy();
+										local remaining = 0;
 										for _, child in pairs(ScriptList:GetChildren()) do
 											if child:IsA("Frame") then
 												remaining = remaining + 1;
@@ -651,112 +717,87 @@ local function IniciarHubOriginal()
 										if (remaining == 0) then
 											LoadScripts({}, {Name="Favoritos"});
 										end
-										break;
 									end
-									if (FlatIdent_2F37F == 0) then
-										ItemFrame:Destroy();
-										remaining = 0;
-										FlatIdent_2F37F = 1;
-									end
+									break;
+								end
+								if (FlatIdent_7909D == 0) then
+									added = ToggleFavorite(name, originGame);
+									UpdateStar();
+									FlatIdent_7909D = 1;
 								end
 							end
 						end);
 						break;
 					end
-					if (FlatIdent_324DE == 3) then
+					if (FlatIdent_1B51D == 2) then
+						b.BackgroundColor3 = Color3.fromRGB(110, 0, 190);
 						b.Text = name;
 						b.TextColor3 = Color3.new(1, 1, 1);
 						b.Font = Enum.Font.GothamBold;
-						FlatIdent_324DE = 4;
-					end
-					if (FlatIdent_324DE == 4) then
-						b.TextSize = 14;
-						Instance.new("UICorner", b).CornerRadius = UDim.new(0, 8);
-						b.MouseButton1Click:Connect(function()
-							ShowExecuteConfirmation(name, executeFunc);
-						end);
-						FlatIdent_324DE = 5;
+						FlatIdent_1B51D = 3;
 					end
 				end
 			end
 		end
 	end
 	local function OpenGame(data)
-		for _, v in pairs(ScriptList:GetChildren()) do
-			if (v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("TextButton") or v:IsA("UIPadding")) then
-				v:Destroy();
-			end
-		end
-		for _, v in pairs(TabArea:GetChildren()) do
-			if (v:IsA("TextButton") or v:IsA("TextLabel")) then
-				v:Destroy();
-			end
-		end
-		local StatusLabel = Instance.new("TextLabel", TabArea);
-		StatusLabel.Size = UDim2.new(1, -10, 0, 30);
-		StatusLabel.Position = UDim2.new(0, 5, 0, 5);
-		StatusLabel.BackgroundTransparency = 1;
-		StatusLabel.Text = "VocÃª estÃ¡ em: " .. data.Name;
-		StatusLabel.TextColor3 = Color3.fromRGB(220, 220, 220);
-		StatusLabel.Font = Enum.Font.GothamMedium;
-		StatusLabel.TextSize = 11;
-		StatusLabel.TextWrapped = true;
-		local function createTab(txt, y, col, tbl)
-			local btn = Instance.new("TextButton", TabArea);
-			btn.Size = UDim2.new(1, -10, 0, 50);
-			btn.Position = UDim2.new(0, 5, 0, y);
-			btn.Text = txt;
-			btn.BackgroundColor3 = col;
-			btn.TextColor3 = Color3.new(1, 1, 1);
-			btn.TextSize = 13;
-			btn.Font = Enum.Font.GothamBold;
-			Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10);
-			btn.MouseButton1Click:Connect(function()
-				LoadScripts(tbl, data);
-			end);
-		end
-		createTab("COM KEY ðŸ”‘", 45, Color3.fromRGB(50, 150, 90), data.Key);
-		createTab("SEM KEY âŒ", 105, Color3.fromRGB(160, 50, 50), data.NoKey);
-	end
-	local FavTabBtn = Instance.new("TextButton", Sidebar);
-	FavTabBtn.Size = UDim2.new(1, -10, 0, 45);
-	FavTabBtn.BackgroundColor3 = Color3.fromRGB(200, 160, 0);
-	FavTabBtn.Text = "â­ MEUS FAVORITOS";
-	FavTabBtn.TextColor3 = Color3.new(0, 0, 0);
-	FavTabBtn.Font = Enum.Font.GothamBold;
-	FavTabBtn.TextSize = 13;
-	FavTabBtn.LayoutOrder = -1;
-	Instance.new("UICorner", FavTabBtn);
-	FavTabBtn.MouseButton1Click:Connect(function()
-		local FlatIdent_5F1CB = 0;
+		local FlatIdent_4CC24 = 0;
 		local StatusLabel;
-		local allFavs;
-		local favListTbl;
+		local createTab;
 		while true do
-			if (FlatIdent_5F1CB == 2) then
-				StatusLabel.Text = "Seus Scripts Favoritos";
-				StatusLabel.TextColor3 = Color3.fromRGB(255, 215, 0);
-				StatusLabel.Font = Enum.Font.GothamBold;
-				FlatIdent_5F1CB = 3;
+			if (1 == FlatIdent_4CC24) then
+				StatusLabel.Position = UDim2.new(0, 5, 0, 5);
+				StatusLabel.BackgroundTransparency = 1;
+				StatusLabel.Text = "VocÃª estÃ¡ em: " .. data.Name;
+				StatusLabel.TextColor3 = Color3.fromRGB(220, 220, 220);
+				FlatIdent_4CC24 = 2;
 			end
-			if (FlatIdent_5F1CB == 4) then
-				favListTbl = {};
-				for gName, scripts in pairs(allFavs) do
-					for _, gData in pairs(Database) do
-						if (gData.Name == gName) then
-							for _, sName in pairs(scripts) do
-								local func = gData.Key[sName] or gData.NoKey[sName];
-								if func then
-									favListTbl[sName] = {func=func,originalGameName=gName};
-								end
-							end
+			if (FlatIdent_4CC24 == 2) then
+				StatusLabel.Font = Enum.Font.GothamMedium;
+				StatusLabel.TextSize = 11;
+				StatusLabel.TextWrapped = true;
+				createTab = nil;
+				FlatIdent_4CC24 = 3;
+			end
+			if (FlatIdent_4CC24 == 3) then
+				function createTab(txt, y, col, tbl)
+					local FlatIdent_8A742 = 0;
+					local btn;
+					while true do
+						if (FlatIdent_8A742 == 1) then
+							btn.Position = UDim2.new(0, 5, 0, y);
+							btn.Text = txt;
+							FlatIdent_8A742 = 2;
+						end
+						if (FlatIdent_8A742 == 3) then
+							btn.TextSize = 13;
+							btn.Font = Enum.Font.GothamBold;
+							FlatIdent_8A742 = 4;
+						end
+						if (0 == FlatIdent_8A742) then
+							btn = Instance.new("TextButton", TabArea);
+							btn.Size = UDim2.new(1, -10, 0, 50);
+							FlatIdent_8A742 = 1;
+						end
+						if (FlatIdent_8A742 == 2) then
+							btn.BackgroundColor3 = col;
+							btn.TextColor3 = Color3.new(1, 1, 1);
+							FlatIdent_8A742 = 3;
+						end
+						if (FlatIdent_8A742 == 4) then
+							Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10);
+							btn.MouseButton1Click:Connect(function()
+								LoadScripts(tbl, data);
+							end);
+							break;
 						end
 					end
 				end
-				LoadScripts(favListTbl, {Name="Favoritos"});
-				FlatIdent_5F1CB = 5;
+				createTab("COM KEY ðŸ”‘", 45, Color3.fromRGB(50, 150, 90), data.Key);
+				createTab("SEM KEY âŒ", 105, Color3.fromRGB(160, 50, 50), data.NoKey);
+				break;
 			end
-			if (FlatIdent_5F1CB == 0) then
+			if (0 == FlatIdent_4CC24) then
 				for _, v in pairs(ScriptList:GetChildren()) do
 					if (v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("TextButton") or v:IsA("UIPadding")) then
 						v:Destroy();
@@ -768,71 +809,126 @@ local function IniciarHubOriginal()
 					end
 				end
 				StatusLabel = Instance.new("TextLabel", TabArea);
-				FlatIdent_5F1CB = 1;
-			end
-			if (1 == FlatIdent_5F1CB) then
 				StatusLabel.Size = UDim2.new(1, -10, 0, 30);
-				StatusLabel.Position = UDim2.new(0, 5, 0, 5);
-				StatusLabel.BackgroundTransparency = 1;
-				FlatIdent_5F1CB = 2;
+				FlatIdent_4CC24 = 1;
 			end
-			if (FlatIdent_5F1CB == 5) then
-				Notify("LISTA", "Carregando seus favoritos...");
-				break;
-			end
-			if (FlatIdent_5F1CB == 3) then
+		end
+	end
+	local FavTabBtn = Instance.new("TextButton", Sidebar);
+	FavTabBtn.Size = UDim2.new(1, -10, 0, 45);
+	FavTabBtn.BackgroundColor3 = Color3.fromRGB(200, 160, 0);
+	FavTabBtn.Text = "â­ MEUS FAVORITOS";
+	FavTabBtn.TextColor3 = Color3.new(0, 0, 0);
+	FavTabBtn.Font = Enum.Font.GothamBold;
+	FavTabBtn.TextSize = 13;
+	FavTabBtn.LayoutOrder = -1;
+	Instance.new("UICorner", FavTabBtn);
+	FavTabBtn.MouseButton1Click:Connect(function()
+		local FlatIdent_2388 = 0;
+		local StatusLabel;
+		local allFavs;
+		local favListTbl;
+		while true do
+			if (3 == FlatIdent_2388) then
 				StatusLabel.TextSize = 12;
 				StatusLabel.TextWrapped = true;
 				allFavs = GetFavorites();
-				FlatIdent_5F1CB = 4;
+				FlatIdent_2388 = 4;
+			end
+			if (FlatIdent_2388 == 5) then
+				Notify("LISTA", "Carregando seus favoritos...");
+				break;
+			end
+			if (FlatIdent_2388 == 2) then
+				StatusLabel.Text = "Seus Scripts Favoritos";
+				StatusLabel.TextColor3 = Color3.fromRGB(255, 215, 0);
+				StatusLabel.Font = Enum.Font.GothamBold;
+				FlatIdent_2388 = 3;
+			end
+			if (FlatIdent_2388 == 0) then
+				for _, v in pairs(ScriptList:GetChildren()) do
+					if (v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("TextButton") or v:IsA("UIPadding")) then
+						v:Destroy();
+					end
+				end
+				for _, v in pairs(TabArea:GetChildren()) do
+					if (v:IsA("TextButton") or v:IsA("TextLabel")) then
+						v:Destroy();
+					end
+				end
+				StatusLabel = Instance.new("TextLabel", TabArea);
+				FlatIdent_2388 = 1;
+			end
+			if (FlatIdent_2388 == 1) then
+				StatusLabel.Size = UDim2.new(1, -10, 0, 30);
+				StatusLabel.Position = UDim2.new(0, 5, 0, 5);
+				StatusLabel.BackgroundTransparency = 1;
+				FlatIdent_2388 = 2;
+			end
+			if (4 == FlatIdent_2388) then
+				favListTbl = {};
+				for gName, scripts in pairs(allFavs) do
+					for _, gData in pairs(Database) do
+						if (gData.Name == gName) then
+							for _, sName in pairs(scripts) do
+								local FlatIdent_DFF4 = 0;
+								local func;
+								while true do
+									if (FlatIdent_DFF4 == 0) then
+										func = gData.Key[sName] or gData.NoKey[sName];
+										if func then
+											favListTbl[sName] = {func=func,originalGameName=gName};
+										end
+										break;
+									end
+								end
+							end
+						end
+					end
+				end
+				LoadScripts(favListTbl, {Name="Favoritos"});
+				FlatIdent_2388 = 5;
 			end
 		end
 	end);
 	for i = 1, #Database do
-		local FlatIdent_494F6 = 0;
-		local info;
-		while true do
-			if (FlatIdent_494F6 == 0) then
-				info = Database[i];
-				if info then
-					local FlatIdent_581C8 = 0;
-					local btn;
-					while true do
-						if (FlatIdent_581C8 == 0) then
-							btn = Instance.new("TextButton", Sidebar);
-							btn.AutoLocalize = false;
-							FlatIdent_581C8 = 1;
-						end
-						if (FlatIdent_581C8 == 4) then
-							Instance.new("UICorner", btn);
-							btn.MouseButton1Click:Connect(function()
-								OpenGame(info);
-							end);
-							break;
-						end
-						if (FlatIdent_581C8 == 3) then
-							btn.Font = Enum.Font.GothamBold;
-							btn.TextSize = 13;
-							FlatIdent_581C8 = 4;
-						end
-						if (FlatIdent_581C8 == 2) then
-							btn.Text = info.Icon .. " " .. info.Name;
-							btn.TextColor3 = Color3.new(1, 1, 1);
-							FlatIdent_581C8 = 3;
-						end
-						if (FlatIdent_581C8 == 1) then
-							btn.Size = UDim2.new(1, -10, 0, 40);
-							btn.BackgroundColor3 = Color3.fromRGB(75, 0, 130);
-							FlatIdent_581C8 = 2;
-						end
-					end
+		local info = Database[i];
+		if info then
+			local FlatIdent_7735C = 0;
+			local btn;
+			while true do
+				if (FlatIdent_7735C == 2) then
+					btn.Text = info.Icon .. " " .. info.Name;
+					btn.TextColor3 = Color3.new(1, 1, 1);
+					FlatIdent_7735C = 3;
 				end
-				break;
+				if (4 == FlatIdent_7735C) then
+					Instance.new("UICorner", btn);
+					btn.MouseButton1Click:Connect(function()
+						OpenGame(info);
+					end);
+					break;
+				end
+				if (FlatIdent_7735C == 0) then
+					btn = Instance.new("TextButton", Sidebar);
+					btn.AutoLocalize = false;
+					FlatIdent_7735C = 1;
+				end
+				if (FlatIdent_7735C == 3) then
+					btn.Font = Enum.Font.GothamBold;
+					btn.TextSize = 13;
+					FlatIdent_7735C = 4;
+				end
+				if (FlatIdent_7735C == 1) then
+					btn.Size = UDim2.new(1, -10, 0, 40);
+					btn.BackgroundColor3 = Color3.fromRGB(75, 0, 130);
+					FlatIdent_7735C = 2;
+				end
 			end
 		end
 	end
 	local function ShowCloseConfirmation()
-		local FlatIdent_4508F = 0;
+		local FlatIdent_7DFA5 = 0;
 		local ConfirmFrame;
 		local UIGradient;
 		local Stroke;
@@ -841,113 +937,104 @@ local function IniciarHubOriginal()
 		local ConfirmBtn;
 		local CancelBtn;
 		while true do
-			if (FlatIdent_4508F == 12) then
-				CancelBtn.Size = UDim2.new(0, 100, 0, 40);
-				CancelBtn.Position = UDim2.new(0.5, 30, 0.8, -10);
-				CancelBtn.TextColor3 = Color3.fromRGB(255, 255, 255);
-				CancelBtn.Font = Enum.Font.GothamBold;
-				FlatIdent_4508F = 13;
+			if (FlatIdent_7DFA5 == 3) then
+				TitleC = Instance.new("TextLabel", ConfirmFrame);
+				TitleC.Text = "Fechar Hub";
+				TitleC.Size = UDim2.new(1, -20, 0, 30);
+				TitleC.Position = UDim2.new(0, 15, 0, 10);
+				TitleC.TextColor3 = Color3.new(1, 1, 1);
+				FlatIdent_7DFA5 = 4;
 			end
-			if (FlatIdent_4508F == 0) then
+			if (FlatIdent_7DFA5 == 1) then
+				ConfirmFrame.BackgroundColor3 = Color3.fromRGB(35, 0, 60);
+				ConfirmFrame.BorderSizePixel = 0;
+				ConfirmFrame.ZIndex = 5000;
+				Instance.new("UICorner", ConfirmFrame).CornerRadius = UDim.new(0, 15);
+				UIGradient = Instance.new("UIGradient", ConfirmFrame);
+				FlatIdent_7DFA5 = 2;
+			end
+			if (FlatIdent_7DFA5 == 0) then
 				if ScreenGui:FindFirstChild("ConfirmCloseFrame") then
 					ScreenGui.ConfirmCloseFrame:Destroy();
 				end
 				ConfirmFrame = Instance.new("Frame", ScreenGui);
 				ConfirmFrame.Name = "ConfirmCloseFrame";
 				ConfirmFrame.Size = UDim2.new(0, 350, 0, 180);
-				FlatIdent_4508F = 1;
+				ConfirmFrame.Position = UDim2.new(0.5, -175, 0.5, -90);
+				FlatIdent_7DFA5 = 1;
 			end
-			if (7 == FlatIdent_4508F) then
-				Msg.Position = UDim2.new(0, 15, 0, 45);
-				Msg.TextColor3 = Color3.fromRGB(220, 220, 220);
-				Msg.Font = Enum.Font.Gotham;
-				Msg.TextSize = 15;
-				FlatIdent_4508F = 8;
-			end
-			if (FlatIdent_4508F == 6) then
-				TitleC.ZIndex = 5001;
-				Msg = Instance.new("TextLabel", ConfirmFrame);
-				Msg.Text = "VocÃª realmente deseja fechar o Universal SFZ Hub?\nSerÃ¡ necessÃ¡rio reexecutar para usÃ¡-lo novamente.";
-				Msg.Size = UDim2.new(1, -30, 0, 80);
-				FlatIdent_4508F = 7;
-			end
-			if (FlatIdent_4508F == 4) then
-				TitleC.Text = "Fechar Hub";
-				TitleC.Size = UDim2.new(1, -20, 0, 30);
-				TitleC.Position = UDim2.new(0, 15, 0, 10);
-				TitleC.TextColor3 = Color3.new(1, 1, 1);
-				FlatIdent_4508F = 5;
-			end
-			if (FlatIdent_4508F == 10) then
+			if (FlatIdent_7DFA5 == 8) then
 				ConfirmBtn.Position = UDim2.new(0.2, 0, 0.8, -10);
 				ConfirmBtn.TextColor3 = Color3.fromRGB(255, 50, 50);
 				ConfirmBtn.Font = Enum.Font.GothamBold;
 				ConfirmBtn.TextSize = 16;
-				FlatIdent_4508F = 11;
+				ConfirmBtn.BackgroundTransparency = 1;
+				FlatIdent_7DFA5 = 9;
 			end
-			if (FlatIdent_4508F == 8) then
-				Msg.TextWrapped = true;
-				Msg.TextXAlignment = "Left";
-				Msg.TextYAlignment = "Top";
-				Msg.BackgroundTransparency = 1;
-				FlatIdent_4508F = 9;
+			if (FlatIdent_7DFA5 == 10) then
+				CancelBtn.TextColor3 = Color3.fromRGB(255, 255, 255);
+				CancelBtn.Font = Enum.Font.GothamBold;
+				CancelBtn.TextSize = 16;
+				CancelBtn.BackgroundTransparency = 1;
+				CancelBtn.ZIndex = 5001;
+				FlatIdent_7DFA5 = 11;
 			end
-			if (FlatIdent_4508F == 2) then
-				Instance.new("UICorner", ConfirmFrame).CornerRadius = UDim.new(0, 15);
-				UIGradient = Instance.new("UIGradient", ConfirmFrame);
+			if (FlatIdent_7DFA5 == 5) then
+				Msg = Instance.new("TextLabel", ConfirmFrame);
+				Msg.Text = "VocÃª realmente deseja fechar o Universal SFZ Hub?\nSerÃ¡ necessÃ¡rio reexecutar para usÃ¡-lo novamente.";
+				Msg.Size = UDim2.new(1, -30, 0, 80);
+				Msg.Position = UDim2.new(0, 15, 0, 45);
+				Msg.TextColor3 = Color3.fromRGB(220, 220, 220);
+				FlatIdent_7DFA5 = 6;
+			end
+			if (FlatIdent_7DFA5 == 2) then
 				UIGradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 0, 150)),ColorSequenceKeypoint.new(1, Color3.fromRGB(35, 0, 60))});
 				UIGradient.Rotation = 90;
-				FlatIdent_4508F = 3;
+				Stroke = Instance.new("UIStroke", ConfirmFrame);
+				Stroke.Color = Color3.fromRGB(120, 0, 210);
+				Stroke.Thickness = 2;
+				FlatIdent_7DFA5 = 3;
 			end
-			if (FlatIdent_4508F == 1) then
-				ConfirmFrame.Position = UDim2.new(0.5, -175, 0.5, -90);
-				ConfirmFrame.BackgroundColor3 = Color3.fromRGB(35, 0, 60);
-				ConfirmFrame.BorderSizePixel = 0;
-				ConfirmFrame.ZIndex = 5000;
-				FlatIdent_4508F = 2;
-			end
-			if (FlatIdent_4508F == 11) then
-				ConfirmBtn.BackgroundTransparency = 1;
-				ConfirmBtn.ZIndex = 5001;
-				CancelBtn = Instance.new("TextButton", ConfirmFrame);
-				CancelBtn.Text = "Cancelar";
-				FlatIdent_4508F = 12;
-			end
-			if (FlatIdent_4508F == 14) then
+			if (FlatIdent_7DFA5 == 11) then
+				ConfirmBtn.MouseButton1Click:Connect(function()
+					ScreenGui:Destroy();
+				end);
 				CancelBtn.MouseButton1Click:Connect(function()
 					ConfirmFrame:Destroy();
 				end);
 				break;
 			end
-			if (FlatIdent_4508F == 13) then
-				CancelBtn.TextSize = 16;
-				CancelBtn.BackgroundTransparency = 1;
-				CancelBtn.ZIndex = 5001;
-				ConfirmBtn.MouseButton1Click:Connect(function()
-					ScreenGui:Destroy();
-				end);
-				FlatIdent_4508F = 14;
+			if (FlatIdent_7DFA5 == 6) then
+				Msg.Font = Enum.Font.Gotham;
+				Msg.TextSize = 15;
+				Msg.TextWrapped = true;
+				Msg.TextXAlignment = "Left";
+				Msg.TextYAlignment = "Top";
+				FlatIdent_7DFA5 = 7;
 			end
-			if (FlatIdent_4508F == 5) then
+			if (FlatIdent_7DFA5 == 4) then
 				TitleC.Font = Enum.Font.GothamBold;
 				TitleC.TextSize = 20;
 				TitleC.TextXAlignment = "Left";
 				TitleC.BackgroundTransparency = 1;
-				FlatIdent_4508F = 6;
+				TitleC.ZIndex = 5001;
+				FlatIdent_7DFA5 = 5;
 			end
-			if (3 == FlatIdent_4508F) then
-				Stroke = Instance.new("UIStroke", ConfirmFrame);
-				Stroke.Color = Color3.fromRGB(120, 0, 210);
-				Stroke.Thickness = 2;
-				TitleC = Instance.new("TextLabel", ConfirmFrame);
-				FlatIdent_4508F = 4;
-			end
-			if (9 == FlatIdent_4508F) then
+			if (FlatIdent_7DFA5 == 7) then
+				Msg.BackgroundTransparency = 1;
 				Msg.ZIndex = 5001;
 				ConfirmBtn = Instance.new("TextButton", ConfirmFrame);
 				ConfirmBtn.Text = "Confirmar";
 				ConfirmBtn.Size = UDim2.new(0, 100, 0, 40);
-				FlatIdent_4508F = 10;
+				FlatIdent_7DFA5 = 8;
+			end
+			if (FlatIdent_7DFA5 == 9) then
+				ConfirmBtn.ZIndex = 5001;
+				CancelBtn = Instance.new("TextButton", ConfirmFrame);
+				CancelBtn.Text = "Cancelar";
+				CancelBtn.Size = UDim2.new(0, 100, 0, 40);
+				CancelBtn.Position = UDim2.new(0.5, 30, 0.8, -10);
+				FlatIdent_7DFA5 = 10;
 			end
 		end
 	end
@@ -963,66 +1050,59 @@ local function IniciarHubOriginal()
 	SearchBar.ZIndex = 15;
 	Instance.new("UICorner", SearchBar).CornerRadius = UDim.new(0, 8);
 	SearchBar:GetPropertyChangedSignal("Text"):Connect(function()
-		local FlatIdent_7F3C8 = 0;
-		local searchText;
-		while true do
-			if (FlatIdent_7F3C8 == 0) then
-				searchText = SearchBar.Text:lower();
-				for _, btn in pairs(Sidebar:GetChildren()) do
-					if btn:IsA("TextButton") then
-						btn.Visible = btn.Text:lower():find(searchText) ~= nil;
-					end
-				end
-				break;
+		local searchText = SearchBar.Text:lower();
+		for _, btn in pairs(Sidebar:GetChildren()) do
+			if btn:IsA("TextButton") then
+				btn.Visible = btn.Text:lower():find(searchText) ~= nil;
 			end
 		end
 	end);
 	local function CreateTopBtn(txt, pos, color, func)
-		local FlatIdent_854BA = 0;
+		local FlatIdent_4223E = 0;
 		local btn;
 		while true do
-			if (FlatIdent_854BA == 3) then
+			if (FlatIdent_4223E == 3) then
 				btn.Font = Enum.Font.GothamBold;
 				btn.ZIndex = 15;
-				FlatIdent_854BA = 4;
+				FlatIdent_4223E = 4;
 			end
-			if (FlatIdent_854BA == 1) then
-				btn.Position = pos;
-				btn.Text = txt;
-				FlatIdent_854BA = 2;
+			if (FlatIdent_4223E == 0) then
+				btn = Instance.new("TextButton", TopBar);
+				btn.Size = UDim2.new(0, 32, 0, 32);
+				FlatIdent_4223E = 1;
 			end
-			if (4 == FlatIdent_854BA) then
+			if (FlatIdent_4223E == 4) then
 				Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8);
 				btn.MouseButton1Click:Connect(func);
 				break;
 			end
-			if (FlatIdent_854BA == 0) then
-				btn = Instance.new("TextButton", TopBar);
-				btn.Size = UDim2.new(0, 32, 0, 32);
-				FlatIdent_854BA = 1;
+			if (FlatIdent_4223E == 1) then
+				btn.Position = pos;
+				btn.Text = txt;
+				FlatIdent_4223E = 2;
 			end
-			if (FlatIdent_854BA == 2) then
+			if (FlatIdent_4223E == 2) then
 				btn.BackgroundColor3 = color;
 				btn.TextColor3 = Color3.new(1, 1, 1);
-				FlatIdent_854BA = 3;
+				FlatIdent_4223E = 3;
 			end
 		end
 	end
 	CreateTopBtn("X", UDim2.new(1, -40, 0, 6), Color3.fromRGB(220, 50, 50), ShowCloseConfirmation);
 	CreateTopBtn("â€”", UDim2.new(1, -80, 0, 6), Color3.fromRGB(60, 60, 180), function()
 		if Holder.Visible then
-			local FlatIdent_3B08E = 0;
+			local FlatIdent_31ECC = 0;
 			while true do
-				if (FlatIdent_3B08E == 0) then
+				if (FlatIdent_31ECC == 0) then
 					Holder.Visible = false;
 					MainFrame:TweenSize(UDim2.new(0, MainFrame.Size.X.Offset, 0, 45), "Out", "Quart", 0.3, true);
 					break;
 				end
 			end
 		else
-			local FlatIdent_94AF7 = 0;
+			local FlatIdent_95359 = 0;
 			while true do
-				if (FlatIdent_94AF7 == 0) then
+				if (0 == FlatIdent_95359) then
 					Holder.Visible = true;
 					MainFrame:TweenSize(UDim2.new(0, MainFrame.Size.X.Offset, 0, 380), "Out", "Quart", 0.3, true);
 					break;
@@ -1035,30 +1115,30 @@ local function IniciarHubOriginal()
 	local resizeStartPos, startSize;
 	TopBar.InputBegan:Connect(function(input)
 		if (((input.UserInputType == Enum.UserInputType.MouseButton1) or (input.UserInputType == Enum.UserInputType.Touch)) and not resizing) then
-			local FlatIdent_7126B = 0;
+			local FlatIdent_2A644 = 0;
 			while true do
-				if (0 == FlatIdent_7126B) then
-					dragToggle = true;
-					dragStart = input.Position;
-					FlatIdent_7126B = 1;
-				end
-				if (FlatIdent_7126B == 1) then
+				if (FlatIdent_2A644 == 1) then
 					startPos = MainFrame.Position;
 					break;
+				end
+				if (FlatIdent_2A644 == 0) then
+					dragToggle = true;
+					dragStart = input.Position;
+					FlatIdent_2A644 = 1;
 				end
 			end
 		end
 	end);
 	ResizeBtn.InputBegan:Connect(function(input)
 		if ((input.UserInputType == Enum.UserInputType.MouseButton1) or (input.UserInputType == Enum.UserInputType.Touch)) then
-			local FlatIdent_21CA5 = 0;
+			local FlatIdent_8B272 = 0;
 			while true do
-				if (FlatIdent_21CA5 == 0) then
+				if (0 == FlatIdent_8B272) then
 					resizing = true;
 					resizeStartPos = input.Position;
-					FlatIdent_21CA5 = 1;
+					FlatIdent_8B272 = 1;
 				end
-				if (FlatIdent_21CA5 == 1) then
+				if (FlatIdent_8B272 == 1) then
 					startSize = MainFrame.Size;
 					dragToggle = false;
 					break;
@@ -1079,27 +1159,57 @@ local function IniciarHubOriginal()
 	end);
 	game:GetService("UserInputService").InputEnded:Connect(function(input)
 		if ((input.UserInputType == Enum.UserInputType.MouseButton1) or (input.UserInputType == Enum.UserInputType.Touch)) then
-			dragToggle = false;
-			resizing = false;
+			local FlatIdent_8384B = 0;
+			while true do
+				if (FlatIdent_8384B == 0) then
+					dragToggle = false;
+					resizing = false;
+					break;
+				end
+			end
 		end
 	end);
 	local function ShowDiscordInvite()
-		local FlatIdent_803FB = 0;
+		local FlatIdent_7873D = 0;
 		local InviteFrame;
 		local Stroke;
 		local TitleD;
 		local MsgD;
 		local OkBtn;
 		while true do
-			if (FlatIdent_803FB == 9) then
+			if (FlatIdent_7873D == 7) then
+				OkBtn.AutoLocalize = false;
+				OkBtn.Text = "OK!";
+				OkBtn.Size = UDim2.new(0, 140, 0, 40);
+				OkBtn.Position = UDim2.new(0.5, -70, 0.85, -15);
+				OkBtn.BackgroundColor3 = Color3.fromRGB(110, 0, 190);
+				FlatIdent_7873D = 8;
+			end
+			if (FlatIdent_7873D == 6) then
+				MsgD.TextXAlignment = "Left";
+				MsgD.TextWrapped = true;
+				MsgD.BackgroundTransparency = 1;
+				MsgD.ZIndex = 9001;
+				OkBtn = Instance.new("TextButton", InviteFrame);
+				FlatIdent_7873D = 7;
+			end
+			if (FlatIdent_7873D == 4) then
+				TitleD.BackgroundTransparency = 1;
+				TitleD.ZIndex = 9001;
+				MsgD = Instance.new("TextLabel", InviteFrame);
+				MsgD.AutoLocalize = false;
+				MsgD.Text = "Fale com o dono do script pelo Discord. Nome para mandar pedido de amizade : drezin.21";
+				FlatIdent_7873D = 5;
+			end
+			if (FlatIdent_7873D == 9) then
 				OkBtn.MouseButton1Click:Connect(function()
-					local FlatIdent_3F15E = 0;
+					local FlatIdent_803FB = 0;
 					while true do
-						if (FlatIdent_3F15E == 0) then
+						if (FlatIdent_803FB == 0) then
 							if setclipboard then
-								local FlatIdent_56F59 = 0;
+								local FlatIdent_61057 = 0;
 								while true do
-									if (FlatIdent_56F59 == 0) then
+									if (0 == FlatIdent_61057) then
 										setclipboard("drezin.21");
 										Notify("COPIADO", "Nome 'drezin.21' copiado para adicionar!");
 										break;
@@ -1113,63 +1223,15 @@ local function IniciarHubOriginal()
 				end);
 				break;
 			end
-			if (6 == FlatIdent_803FB) then
-				MsgD.TextXAlignment = "Left";
-				MsgD.TextWrapped = true;
-				MsgD.BackgroundTransparency = 1;
-				MsgD.ZIndex = 9001;
-				OkBtn = Instance.new("TextButton", InviteFrame);
-				FlatIdent_803FB = 7;
-			end
-			if (FlatIdent_803FB == 2) then
+			if (FlatIdent_7873D == 2) then
 				Stroke.Thickness = 2;
 				TitleD = Instance.new("TextLabel", InviteFrame);
 				TitleD.AutoLocalize = false;
 				TitleD.Text = "Suporte & Amizade";
 				TitleD.Size = UDim2.new(1, -40, 0, 40);
-				FlatIdent_803FB = 3;
+				FlatIdent_7873D = 3;
 			end
-			if (FlatIdent_803FB == 1) then
-				InviteFrame.BackgroundColor3 = Color3.fromRGB(10, 0, 20);
-				InviteFrame.ZIndex = 9000;
-				Instance.new("UICorner", InviteFrame).CornerRadius = UDim.new(0, 15);
-				Stroke = Instance.new("UIStroke", InviteFrame);
-				Stroke.Color = Color3.fromRGB(120, 0, 210);
-				FlatIdent_803FB = 2;
-			end
-			if (5 == FlatIdent_803FB) then
-				MsgD.Size = UDim2.new(1, -40, 0, 80);
-				MsgD.Position = UDim2.new(0, 20, 0, 55);
-				MsgD.TextColor3 = Color3.fromRGB(200, 200, 200);
-				MsgD.Font = Enum.Font.Gotham;
-				MsgD.TextSize = 15;
-				FlatIdent_803FB = 6;
-			end
-			if (FlatIdent_803FB == 3) then
-				TitleD.Position = UDim2.new(0, 20, 0, 15);
-				TitleD.TextColor3 = Color3.new(1, 1, 1);
-				TitleD.Font = Enum.Font.GothamBold;
-				TitleD.TextSize = 18;
-				TitleD.TextXAlignment = "Left";
-				FlatIdent_803FB = 4;
-			end
-			if (FlatIdent_803FB == 4) then
-				TitleD.BackgroundTransparency = 1;
-				TitleD.ZIndex = 9001;
-				MsgD = Instance.new("TextLabel", InviteFrame);
-				MsgD.AutoLocalize = false;
-				MsgD.Text = "Fale com o dono do script pelo Discord. Nome para mandar pedido de amizade : drezin.21";
-				FlatIdent_803FB = 5;
-			end
-			if (FlatIdent_803FB == 7) then
-				OkBtn.AutoLocalize = false;
-				OkBtn.Text = "OK!";
-				OkBtn.Size = UDim2.new(0, 140, 0, 40);
-				OkBtn.Position = UDim2.new(0.5, -70, 0.85, -15);
-				OkBtn.BackgroundColor3 = Color3.fromRGB(110, 0, 190);
-				FlatIdent_803FB = 8;
-			end
-			if (0 == FlatIdent_803FB) then
+			if (0 == FlatIdent_7873D) then
 				if ScreenGui:FindFirstChild("DiscordInviteFrame") then
 					ScreenGui.DiscordInviteFrame:Destroy();
 				end
@@ -1177,15 +1239,39 @@ local function IniciarHubOriginal()
 				InviteFrame.Name = "DiscordInviteFrame";
 				InviteFrame.Size = UDim2.new(0, 400, 0, 220);
 				InviteFrame.Position = UDim2.new(0.5, -200, 0.5, -110);
-				FlatIdent_803FB = 1;
+				FlatIdent_7873D = 1;
 			end
-			if (FlatIdent_803FB == 8) then
+			if (FlatIdent_7873D == 1) then
+				InviteFrame.BackgroundColor3 = Color3.fromRGB(10, 0, 20);
+				InviteFrame.ZIndex = 9000;
+				Instance.new("UICorner", InviteFrame).CornerRadius = UDim.new(0, 15);
+				Stroke = Instance.new("UIStroke", InviteFrame);
+				Stroke.Color = Color3.fromRGB(120, 0, 210);
+				FlatIdent_7873D = 2;
+			end
+			if (FlatIdent_7873D == 3) then
+				TitleD.Position = UDim2.new(0, 20, 0, 15);
+				TitleD.TextColor3 = Color3.new(1, 1, 1);
+				TitleD.Font = Enum.Font.GothamBold;
+				TitleD.TextSize = 18;
+				TitleD.TextXAlignment = "Left";
+				FlatIdent_7873D = 4;
+			end
+			if (8 == FlatIdent_7873D) then
 				OkBtn.TextColor3 = Color3.new(1, 1, 1);
 				OkBtn.Font = Enum.Font.GothamBold;
 				OkBtn.TextSize = 18;
 				OkBtn.ZIndex = 9001;
 				Instance.new("UICorner", OkBtn).CornerRadius = UDim.new(0, 10);
-				FlatIdent_803FB = 9;
+				FlatIdent_7873D = 9;
+			end
+			if (FlatIdent_7873D == 5) then
+				MsgD.Size = UDim2.new(1, -40, 0, 80);
+				MsgD.Position = UDim2.new(0, 20, 0, 55);
+				MsgD.TextColor3 = Color3.fromRGB(200, 200, 200);
+				MsgD.Font = Enum.Font.Gotham;
+				MsgD.TextSize = 15;
+				FlatIdent_7873D = 6;
 			end
 		end
 	end
@@ -1204,31 +1290,31 @@ local function IniciarHubOriginal()
 	FloatBtn.Draggable = true;
 	FloatBtn.MouseButton1Click:Connect(function()
 		if not MainFrame.Visible then
-			local FlatIdent_3121 = 0;
+			local FlatIdent_55D83 = 0;
 			while true do
-				if (FlatIdent_3121 == 1) then
+				if (FlatIdent_55D83 == 1) then
 					MainFrame.Visible = true;
 					MainFrame:TweenSize(UDim2.new(0, 620, 0, 380), "Out", "Back", 0.5, true);
 					break;
 				end
-				if (FlatIdent_3121 == 0) then
+				if (FlatIdent_55D83 == 0) then
 					Holder.Visible = true;
 					MainFrame.Size = UDim2.new(0, 0, 0, 0);
-					FlatIdent_3121 = 1;
+					FlatIdent_55D83 = 1;
 				end
 			end
 		else
-			local FlatIdent_51C44 = 0;
+			local FlatIdent_30F75 = 0;
 			while true do
-				if (FlatIdent_51C44 == 1) then
+				if (0 == FlatIdent_30F75) then
+					MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Back", 0.4, true);
+					task.wait(0.4);
+					FlatIdent_30F75 = 1;
+				end
+				if (1 == FlatIdent_30F75) then
 					MainFrame.Visible = false;
 					MainFrame.Size = UDim2.new(0, 620, 0, 380);
 					break;
-				end
-				if (FlatIdent_51C44 == 0) then
-					MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Back", 0.4, true);
-					task.wait(0.4);
-					FlatIdent_51C44 = 1;
 				end
 			end
 		end
@@ -1251,34 +1337,50 @@ local function IniciarHubOriginal()
 	IntroText.TextSize = 18;
 	IntroText.ZIndex = 501;
 	task.spawn(function()
-		local startTime = tick();
-		while (tick() - startTime) < 3 do
-			local FlatIdent_1BAD7 = 0;
-			local pulse;
-			while true do
-				if (FlatIdent_1BAD7 == 0) then
-					pulse = 1 + (0.06 * math.sin(tick() * 4));
-					IntroFrame.Size = UDim2.new(0, 350 * pulse, 0, 80 * pulse);
-					FlatIdent_1BAD7 = 1;
+		local FlatIdent_360E8 = 0;
+		local startTime;
+		while true do
+			if (FlatIdent_360E8 == 0) then
+				startTime = tick();
+				while (tick() - startTime) < 3 do
+					local FlatIdent_3F15E = 0;
+					local pulse;
+					while true do
+						if (FlatIdent_3F15E == 1) then
+							IntroFrame.Position = UDim2.new(0.5, -(350 * pulse) / 2, 0.5, -(80 * pulse) / 2);
+							task.wait();
+							break;
+						end
+						if (FlatIdent_3F15E == 0) then
+							pulse = 1 + (0.06 * math.sin(tick() * 4));
+							IntroFrame.Size = UDim2.new(0, 350 * pulse, 0, 80 * pulse);
+							FlatIdent_3F15E = 1;
+						end
+					end
 				end
-				if (FlatIdent_1BAD7 == 1) then
-					IntroFrame.Position = UDim2.new(0.5, -(350 * pulse) / 2, 0.5, -(80 * pulse) / 2);
-					task.wait();
-					break;
-				end
+				TweenService:Create(IntroFrame, TweenInfo.new(0.6), {BackgroundTransparency=1}):Play();
+				TweenService:Create(IntroStroke, TweenInfo.new(0.6), {Transparency=1}):Play();
+				FlatIdent_360E8 = 1;
+			end
+			if (FlatIdent_360E8 == 3) then
+				task.delay(1, ShowDiscordInvite);
+				break;
+			end
+			if (FlatIdent_360E8 == 2) then
+				MainFrame.Size = UDim2.new(0, 0, 0, 0);
+				MainFrame.Visible = true;
+				MainFrame:TweenSize(UDim2.new(0, 620, 0, 380), "Out", "Back", 0.6, true);
+				Notify("HUB ATIVO", "Bem-vindo ao Script Universal do Kira!");
+				FlatIdent_360E8 = 3;
+			end
+			if (1 == FlatIdent_360E8) then
+				TweenService:Create(IntroText, TweenInfo.new(0.6), {TextTransparency=1}):Play();
+				task.wait(0.6);
+				IntroFrame:Destroy();
+				FloatBtn.Visible = true;
+				FlatIdent_360E8 = 2;
 			end
 		end
-		TweenService:Create(IntroFrame, TweenInfo.new(0.6), {BackgroundTransparency=1}):Play();
-		TweenService:Create(IntroStroke, TweenInfo.new(0.6), {Transparency=1}):Play();
-		TweenService:Create(IntroText, TweenInfo.new(0.6), {TextTransparency=1}):Play();
-		task.wait(0.6);
-		IntroFrame:Destroy();
-		FloatBtn.Visible = true;
-		MainFrame.Size = UDim2.new(0, 0, 0, 0);
-		MainFrame.Visible = true;
-		MainFrame:TweenSize(UDim2.new(0, 620, 0, 380), "Out", "Back", 0.6, true);
-		Notify("HUB ATIVO", "Bem-vindo ao Script Universal do Kira!");
-		task.delay(1, ShowDiscordInvite);
 	end);
 	print("Script Universal Hub Iniciado!");
 end
@@ -1295,49 +1397,77 @@ MainStroke.Color = Color3.fromRGB(120, 0, 210);
 MainStroke.Thickness = 2.5;
 MainStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
 local function CustomNotify(title, msg, isError, customColor)
-	local NotifFrame = Instance.new("Frame", KeyGui);
-	NotifFrame.Size = UDim2.new(0, 220, 0, 60);
-	NotifFrame.Position = UDim2.new(1, 10, 1, -70);
-	NotifFrame.BackgroundColor3 = Color3.fromRGB(45, 0, 80);
-	Instance.new("UICorner", NotifFrame).CornerRadius = UDim.new(0, 10);
-	local ns = Instance.new("UIStroke", NotifFrame);
-	ns.Color = customColor or (isError and Color3.fromRGB(255, 50, 50)) or Color3.fromRGB(110, 0, 190);
-	ns.Thickness = 2;
-	local t = Instance.new("TextLabel", NotifFrame);
-	t.Text = title;
-	t.Size = UDim2.new(1, -20, 0, 25);
-	t.Position = UDim2.new(0, 10, 0, 5);
-	t.BackgroundTransparency = 1;
-	t.TextColor3 = Color3.new(1, 1, 1);
-	t.Font = Enum.Font.GothamBold;
-	t.TextSize = 13;
-	t.TextXAlignment = "Left";
-	local m = Instance.new("TextLabel", NotifFrame);
-	m.Text = msg;
-	m.Size = UDim2.new(1, -20, 0, 25);
-	m.Position = UDim2.new(0, 10, 0, 30);
-	m.BackgroundTransparency = 1;
-	m.TextColor3 = Color3.fromRGB(200, 200, 200);
-	m.Font = Enum.Font.Gotham;
-	m.TextSize = 11;
-	m.TextXAlignment = "Left";
-	NotifFrame:TweenPosition(UDim2.new(1, -230, 1, -70), "Out", "Back", 0.5, true);
-	task.delay(3, function()
-		if NotifFrame then
-			local FlatIdent_6EF7B = 0;
-			while true do
-				if (FlatIdent_6EF7B == 0) then
-					NotifFrame:TweenPosition(UDim2.new(1, 10, 1, -70), "In", "Back", 0.5, true);
-					task.wait(0.5);
-					FlatIdent_6EF7B = 1;
-				end
-				if (FlatIdent_6EF7B == 1) then
-					NotifFrame:Destroy();
-					break;
-				end
-			end
+	local FlatIdent_542D1 = 0;
+	local NotifFrame;
+	local ns;
+	local t;
+	local m;
+	while true do
+		if (FlatIdent_542D1 == 2) then
+			t = Instance.new("TextLabel", NotifFrame);
+			t.Text = title;
+			t.Size = UDim2.new(1, -20, 0, 25);
+			t.Position = UDim2.new(0, 10, 0, 5);
+			FlatIdent_542D1 = 3;
 		end
-	end);
+		if (5 == FlatIdent_542D1) then
+			m.Position = UDim2.new(0, 10, 0, 30);
+			m.BackgroundTransparency = 1;
+			m.TextColor3 = Color3.fromRGB(200, 200, 200);
+			m.Font = Enum.Font.Gotham;
+			FlatIdent_542D1 = 6;
+		end
+		if (FlatIdent_542D1 == 3) then
+			t.BackgroundTransparency = 1;
+			t.TextColor3 = Color3.new(1, 1, 1);
+			t.Font = Enum.Font.GothamBold;
+			t.TextSize = 13;
+			FlatIdent_542D1 = 4;
+		end
+		if (FlatIdent_542D1 == 4) then
+			t.TextXAlignment = "Left";
+			m = Instance.new("TextLabel", NotifFrame);
+			m.Text = msg;
+			m.Size = UDim2.new(1, -20, 0, 25);
+			FlatIdent_542D1 = 5;
+		end
+		if (FlatIdent_542D1 == 1) then
+			Instance.new("UICorner", NotifFrame).CornerRadius = UDim.new(0, 10);
+			ns = Instance.new("UIStroke", NotifFrame);
+			ns.Color = customColor or (isError and Color3.fromRGB(255, 50, 50)) or Color3.fromRGB(110, 0, 190);
+			ns.Thickness = 2;
+			FlatIdent_542D1 = 2;
+		end
+		if (FlatIdent_542D1 == 6) then
+			m.TextSize = 11;
+			m.TextXAlignment = "Left";
+			NotifFrame:TweenPosition(UDim2.new(1, -230, 1, -70), "Out", "Back", 0.5, true);
+			task.delay(3, function()
+				if NotifFrame then
+					local FlatIdent_229D1 = 0;
+					while true do
+						if (FlatIdent_229D1 == 0) then
+							NotifFrame:TweenPosition(UDim2.new(1, 10, 1, -70), "In", "Back", 0.5, true);
+							task.wait(0.5);
+							FlatIdent_229D1 = 1;
+						end
+						if (FlatIdent_229D1 == 1) then
+							NotifFrame:Destroy();
+							break;
+						end
+					end
+				end
+			end);
+			break;
+		end
+		if (FlatIdent_542D1 == 0) then
+			NotifFrame = Instance.new("Frame", KeyGui);
+			NotifFrame.Size = UDim2.new(0, 220, 0, 60);
+			NotifFrame.Position = UDim2.new(1, 10, 1, -70);
+			NotifFrame.BackgroundColor3 = Color3.fromRGB(45, 0, 80);
+			FlatIdent_542D1 = 1;
+		end
+	end
 end
 local KeyTitle = Instance.new("TextLabel", KeyMain);
 KeyTitle.Size = UDim2.new(1, 0, 0, 50);
@@ -1379,30 +1509,36 @@ GetKeyBtn.TextSize = 12;
 Instance.new("UICorner", GetKeyBtn);
 GetKeyBtn.MouseButton1Click:Connect(function()
 	if setclipboard then
-		setclipboard("drezin.21");
-		CustomNotify("COPIADO", "Adicione o dono no Discord para pegar a Key", false);
+		local FlatIdent_699E4 = 0;
+		while true do
+			if (FlatIdent_699E4 == 0) then
+				setclipboard("drezin.21");
+				CustomNotify("COPIADO", "Adicione o dono no Discord para pegar a Key", false);
+				break;
+			end
+		end
 	else
 		CustomNotify("ERRO", "Seu executor nÃ£o suporta copiar.", true);
 	end
 end);
 CheckBtn.MouseButton1Click:Connect(function()
 	if (KeyInput.Text == CorrectKey) then
-		local FlatIdent_6E214 = 0;
+		local FlatIdent_734D3 = 0;
 		local successColor;
 		while true do
-			if (FlatIdent_6E214 == 2) then
-				IniciarHubOriginal();
-				break;
-			end
-			if (FlatIdent_6E214 == 1) then
-				task.wait(1.5);
-				KeyGui:Destroy();
-				FlatIdent_6E214 = 2;
-			end
-			if (FlatIdent_6E214 == 0) then
+			if (FlatIdent_734D3 == 0) then
 				successColor = Color3.fromRGB(50, 255, 50);
 				CustomNotify("KEY VERIFICADA", "Acesso concedido, o script irÃ¡ carregar", false, successColor);
-				FlatIdent_6E214 = 1;
+				FlatIdent_734D3 = 1;
+			end
+			if (FlatIdent_734D3 == 1) then
+				task.wait(1.5);
+				KeyGui:Destroy();
+				FlatIdent_734D3 = 2;
+			end
+			if (FlatIdent_734D3 == 2) then
+				IniciarHubOriginal();
+				break;
 			end
 		end
 	else
