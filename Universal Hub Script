@@ -5,7 +5,7 @@ local HttpService = game:GetService("HttpService")
 local LocalPlayer = Players.LocalPlayer
 
 -- 2. CONFIGURAÇÃO DA KEY ATUALIZADA
-local CorrectKey = "01928" 
+local CorrectKey = "2026MUNDONOVO" 
 
 -- 3. FUNÇÃO DO SEU HUB ORIGINAL
 local function IniciarHubOriginal()
@@ -348,7 +348,7 @@ local Title = Instance.new("TextLabel", TopBar)
 Title.Size = UDim2.new(1, -260, 1, 0)
 Title.Position = UDim2.new(0, 20, 0, 0)
 Title.BackgroundTransparency = 1
-Title.Text = "Script Universal Hub Feito Por SFZ Hub | Português (BR)"
+Title.Text = "Script Universal Hub Feito por SFZ Hub | Português (BR)"
 Title.TextColor3 = Color3.new(1,1,1)
 Title.Font = Enum.Font.GothamBold; Title.TextSize = 13; Title.TextXAlignment = Enum.TextXAlignment.Left; Title.ZIndex = 11
 
@@ -683,12 +683,12 @@ local function ShowDiscordInvite()
 
     local TitleD = Instance.new("TextLabel", InviteFrame)
     TitleD.AutoLocalize = false
-    TitleD.Text = "Suporte & Amizade"; TitleD.Size = UDim2.new(1, -40, 0, 40); TitleD.Position = UDim2.new(0, 20, 0, 15); TitleD.TextColor3 = Color3.new(1,1,1); TitleD.Font = Enum.Font.GothamBold; TitleD.TextSize = 18; TitleD.TextXAlignment = "Left"; TitleD.BackgroundTransparency = 1; TitleD.ZIndex = 9001
+    TitleD.Text = "Discord & Amizade"; TitleD.Size = UDim2.new(1, -40, 0, 40); TitleD.Position = UDim2.new(0, 20, 0, 15); TitleD.TextColor3 = Color3.new(1,1,1); TitleD.Font = Enum.Font.GothamBold; TitleD.TextSize = 18; TitleD.TextXAlignment = "Left"; TitleD.BackgroundTransparency = 1; TitleD.ZIndex = 9001
 
     local MsgD = Instance.new("TextLabel", InviteFrame)
     MsgD.AutoLocalize = false
     -- MENSAGEM QUE VOCÊ PEDIU
-    MsgD.Text = "Fale com o Dono do script pelo Discord. Link do servidor copiado; 
+    MsgD.Text = "Clique em ok para copiar o link do nosso servidor e depois cole no seu navegador"; 
     MsgD.Size = UDim2.new(1, -40, 0, 80); MsgD.Position = UDim2.new(0, 20, 0, 55); MsgD.TextColor3 = Color3.fromRGB(200, 200, 200); MsgD.Font = Enum.Font.Gotham; MsgD.TextSize = 15; MsgD.TextXAlignment = "Left"; MsgD.TextWrapped = true; MsgD.BackgroundTransparency = 1; MsgD.ZIndex = 9001
 
     local OkBtn = Instance.new("TextButton", InviteFrame)
@@ -699,7 +699,7 @@ local function ShowDiscordInvite()
     OkBtn.MouseButton1Click:Connect(function() 
         if setclipboard then 
             setclipboard("https://discord.gg/7zEswXGUw") 
-            Notify("COPIADO", "Link do Discord SFZ Hub copiado. Cole o link no seu navegador") 
+            Notify("COPIADO", "Entre no Discord do SFZ Hub para saber mais") 
         end 
         InviteFrame:Destroy() 
     end)
@@ -755,7 +755,7 @@ task.spawn(function()
     task.wait(0.6); IntroFrame:Destroy(); FloatBtn.Visible = true; MainFrame.Size = UDim2.new(0, 0, 0, 0); MainFrame.Visible = true; MainFrame:TweenSize(UDim2.new(0, 620, 0, 380), "Out", "Back", 0.6, true)
     
     -- NOTIFICAÇÃO AO ABRIR
-    Notify("HUB ATIVO", "Bem-vindo ao Script Universal do SFZ Hub!")
+    Notify("HUB ATIVO", "Bem-vindo ao Script Universal do Kira!")
     task.delay(1, ShowDiscordInvite) 
 end)
     print("Script Universal Hub Iniciado!")
@@ -853,8 +853,8 @@ Instance.new("UICorner", GetKeyBtn)
 
 GetKeyBtn.MouseButton1Click:Connect(function()
     if setclipboard then
-        setclipboard("https://discord.gg/7zEswXGUw") 
-        CustomNotify("COPIADO", "Entre no nosso Discord para saber mais. Cole o link copiado no seu navegador", false) 
+        setclipboard("drezin._21") 
+        CustomNotify("COPIADO", "Adicione o dono no Discord para pegar a Key ou saber mais", false) 
     else
         CustomNotify("ERRO", "Seu executor não suporta copiar.", true)
     end
