@@ -698,12 +698,12 @@ local function ShowDiscordInvite()
 
     local TitleD = Instance.new("TextLabel", InviteFrame)
     TitleD.AutoLocalize = false
-    TitleD.Text = "Suporte & Amizade"; TitleD.Size = UDim2.new(1, -40, 0, 40); TitleD.Position = UDim2.new(0, 20, 0, 15); TitleD.TextColor3 = Color3.new(1,1,1); TitleD.Font = Enum.Font.GothamBold; TitleD.TextSize = 18; TitleD.TextXAlignment = "Left"; TitleD.BackgroundTransparency = 1; TitleD.ZIndex = 9001
+    TitleD.Text = "Discord"; TitleD.Size = UDim2.new(1, -40, 0, 40); TitleD.Position = UDim2.new(0, 20, 0, 15); TitleD.TextColor3 = Color3.new(1,1,1); TitleD.Font = Enum.Font.GothamBold; TitleD.TextSize = 18; TitleD.TextXAlignment = "Left"; TitleD.BackgroundTransparency = 1; TitleD.ZIndex = 9001
 
     local MsgD = Instance.new("TextLabel", InviteFrame)
     MsgD.AutoLocalize = false
     -- MENSAGEM QUE VOCÊ PEDIU
-    MsgD.Text = "Fale com o dono do script pelo Discord. Nome para mandar pedido de amizade : drezin.21"; 
+    MsgD.Text = "Fale com o dono do script pelo Discord. Cole o link do discord no seu navegador"; 
     MsgD.Size = UDim2.new(1, -40, 0, 80); MsgD.Position = UDim2.new(0, 20, 0, 55); MsgD.TextColor3 = Color3.fromRGB(200, 200, 200); MsgD.Font = Enum.Font.Gotham; MsgD.TextSize = 15; MsgD.TextXAlignment = "Left"; MsgD.TextWrapped = true; MsgD.BackgroundTransparency = 1; MsgD.ZIndex = 9001
 
     local OkBtn = Instance.new("TextButton", InviteFrame)
@@ -713,8 +713,8 @@ local function ShowDiscordInvite()
     -- OK AGORA COPIA O SEU NOME drezin.21
     OkBtn.MouseButton1Click:Connect(function() 
         if setclipboard then 
-            setclipboard("drezin.21") 
-            Notify("COPIADO", "Nome 'drezin.21' copiado para adicionar!") 
+            setclipboard("https://discord.gg/7zEswXGUw") 
+            Notify("COPIADO", "Entre no nosso  'discord' o link será copiado!") 
         end 
         InviteFrame:Destroy() 
     end)
@@ -770,7 +770,7 @@ task.spawn(function()
     task.wait(0.6); IntroFrame:Destroy(); FloatBtn.Visible = true; MainFrame.Size = UDim2.new(0, 0, 0, 0); MainFrame.Visible = true; MainFrame:TweenSize(UDim2.new(0, 620, 0, 380), "Out", "Back", 0.6, true)
     
     -- NOTIFICAÇÃO AO ABRIR
-    Notify("HUB ATIVO", "Bem-vindo ao Script Universal do Kira!")
+    Notify("HUB ATIVO", "Bem-vindo ao Script Universal do SFZ Hub!")
     task.delay(1, ShowDiscordInvite) 
 end)
     print("Script Universal Hub Iniciado!")
@@ -868,8 +868,8 @@ Instance.new("UICorner", GetKeyBtn)
 
 GetKeyBtn.MouseButton1Click:Connect(function()
     if setclipboard then
-        setclipboard("drezin.21") 
-        CustomNotify("COPIADO", "Adicione o dono no Discord para pegar a Key", false) 
+        setclipboard("https://discord.gg/7zEswXGUw") 
+        CustomNotify("COPIADO", "Entre no nosso Discord para saber mais!", false) 
     else
         CustomNotify("ERRO", "Seu executor não suporta copiar.", true)
     end
